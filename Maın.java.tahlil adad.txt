@@ -1,0 +1,63 @@
+
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+     Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter a positive integer: ");
+             int number = input.nextInt();
+
+           int temp = number;
+          int count = 0;
+        int sum = 0;
+          int product = 1;
+        int max = 0;
+        int min = 9;
+         int even = 0;
+        int odd = 0;
+         int reverse = 0;
+
+          while (temp > 0) {
+
+            int digit = temp % 10;
+ 
+          
+             count++;
+            sum = sum + digit;
+
+            if (digit != 0) {
+                product *= digit;
+            }
+
+                   if (digit > max) {
+                max = digit;
+            }
+
+              if (digit < min) {
+                min = digit;
+            }
+
+                if (digit % 2 == 0) {
+                even++;
+            } else {
+                odd++;
+            }
+
+                   reverse = reverse * 10 + digit;
+
+            temp /= 10;
+        }
+
+          System.out.println("Number of digits: " + count);
+            System.out.println("Sum of digits: " + sum);
+          System.out.println("Product of non-zero digits: " + product);
+           System.out.println("Max digit: " + max);
+            System.out.println("Min digit: " + min);
+           System.out.println("Even digits: " + even);
+        System.out.println("Odd digits: " + odd);
+        System.out.println("Reversed number: " + reverse);
+
+        input.close();
+    }
+}
