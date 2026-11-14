@@ -1,0 +1,52 @@
+
+import java.util.Scanner;
+
+public class Main {
+ public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+            System.out.print("Enter a positive integer: ");
+         int n = input.nextInt();
+
+           int count = 0;
+        int sum = 0;
+
+              System.out.println("Divisors:");
+
+           for (int i = 1; i <= n; i++) {
+            if (n % i == 0) {
+                  count++;
+                sum++;
+                 sum += i;
+
+                System.out.print(i + " ");
+            }
+        }
+
+          System.out.println("\nNumber of divisors: " + count);
+        System.out.println("Sum of divisors: " + sum);
+
+           if (count == 2) {
+             System.out.println("Prime number");
+                    } else {
+               System.out.println("Not a prime number");
+
+            System.out.println("Non-trivial divisors:");
+
+                for (int i = 2; i < n; i++) {
+                if (n % i == 0) {
+                    System.out.print(i + " ");
+                }
+            }
+        }
+
+        if (sum - 1 - n == n) {
+             System.out.println("\nPerfect number");
+        } else {
+              System.out.println("\nNot a perfect number");
+        }
+
+        input.close();
+    }
+}
