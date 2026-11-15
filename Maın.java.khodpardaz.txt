@@ -1,0 +1,70 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        long balance = 10000000;
+        int choice;
+        long amount
+
+        do {
+            System.out.println("\n===== ATM MENU =====");
+            System.out.println("1. مشاهده موجودی");
+            System.out.println("2. واریز وجه");
+            System.out.println("3. برداشت وجه");
+            System.out.println("4. خروج");
+            System.out.print("انتخاب کنید: ");
+
+            choice = input.nextInt();
+
+            switch (choice) {
+
+                case 1:
+                    System.out.println("موجودی شما: " + balance + " ریال");
+                    break;
+
+                case 2:
+                    System.out.print("مبلغ واریز را وارد کنید: ");
+                    amount = input.nextLong();
+
+                    if (amount > 0) {
+                        balance += amount;
+                        System.out.println("واریز با موفقیت انجام شد.");
+                        System.out.println("موجودی جدید: " + balance);
+                    } else {
+                        System.out.println("مبلغ باید مثبت باشد.");
+                    }
+                    break;
+
+                case 3:
+                    System.out.print("مبلغ برداشت را وارد کنید: ");
+                    amount = input.nextLong();
+
+                    if (amount <= 0) {
+                        System.out.println("مبلغ باید مثبت باشد.");
+                    } else if (amount % 50000 != 0) {
+                        System.out.println("مبلغ باید مضربی از 50000 باشد.");
+                    } else if (amount > balance) {
+                        System.out.println("موجودی کافی نیست.");
+                    } else {
+                        balance -= amount;
+                        System.out.println("برداشت با موفقیت انجام شد.");
+                        System.out.println("موجودی جدید: " + balance);
+                    }
+                    break;
+
+                case 4:
+                    System.out.println("از دستگاه خودپرداز خارج شدید.");
+                    break;
+
+                default:
+                    System.out.println("گزینه نامعتبر است.");
+            }
+
+        } while (choice != 4);
+
+        input.close();
+    }
+}
