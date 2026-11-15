@@ -1,0 +1,57 @@
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int n;
+        do {
+            System.out.print("Enter number of students: ");
+            n = input.nextInt();
+        } while (n <= 0);
+
+        double sum = 0;
+        double grade;
+        double max = -1;
+        double min = 21;
+
+        int passed = 0;
+        int excellent = 0;
+
+        for (int i = 1; i <= n; i++) {
+
+            System.out.print("Enter grade of student " + i + ": ");
+            grade = input.nextDouble();
+
+            sum += grade;
+
+            if (grade > max) {
+                max = grade;
+            }
+
+            if (grade < min) {
+                min = grade;
+            }
+
+            if (grade >= 10) {
+                passed++;
+            }
+
+            if (grade >= 18) {
+                excellent++;
+            }
+        }
+
+        double average = sum / n;
+
+        System.out.println("Average: " + average);
+        System.out.println("Maximum grade: " + max);
+        System.out.println("Minimum grade: " + min);
+        System.out.println("Passed students: " + passed);
+        System.out.println("Excellent students: " + excellent);
+
+        input.close();
+    }
+}
