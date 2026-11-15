@@ -1,0 +1,17 @@
+
+public class Main {
+    public static void main(String[] args) {
+
+        String[] names = {"Ali", "Reza", "Sara"};
+
+        for (int i = 0; i < names.length; i++) {
+
+            for (int j = names[i].length() - 1; j >= 0; j--) {
+
+                System.out.print(names[i].charAt(j));
+            }
+
+            System.out.println();
+        }
+    }
+}
