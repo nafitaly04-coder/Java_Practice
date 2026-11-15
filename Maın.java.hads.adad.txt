@@ -1,0 +1,71 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        Random random = new Random();
+
+        int target = random.nextInt(100) + 1;
+        int score = 100;
+        int attempts = 0;
+        int guess;
+
+        int[] previousGuesses = new int[7];
+
+        System.out.println("Guess the number between 1 and 100!");
+
+        while (attempts < 7) {
+
+            System.out.print("Enter your guess: ");
+            guess = input.nextInt();
+
+            if (guess < 1 || guess > 100) {
+                System.out.println("Invalid number! Enter 1 to 100.");
+                continue;
+            }
+
+            boolean repeated = false;
+
+            for (int i = 0; i < attempts; i++) {
+                if (previousGuesses[i] == guess) {
+                    repeated = true;
+                    break;
+                }
+            }
+
+            if (repeated) {
+                System.out.println("You already guessed this number!");
+                score -= 10;
+                continue;
+            }
+
+            previousGuesses[attempts] = guess;
+            attempts++;
+
+            if (guess == target) {
+                System.out.println("Correct! You won!");
+                score -= (attempts - 1) * 10;
+                System.out.println("Your score: " + Math.max(score, 0));
+                break;
+            } 
+            else if (guess > target) {
+                System.out.println("Your guess is too high!");
+            } 
+            else {
+                System.out.println("Your guess is too low!");
+            }
+
+            score -= 10;
+        }
+
+        if (attempts == 7 && guess != target) {
+            System.out.println("Game Over!");
+            System.out.println("The correct number was: " + target);
+            System.out.println("Your score: " + Math.max(score, 0));
+        }
+
+        input.close();
+    }
+}
